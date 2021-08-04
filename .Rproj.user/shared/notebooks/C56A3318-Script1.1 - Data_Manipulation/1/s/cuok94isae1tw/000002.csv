@@ -1,4 +1,0 @@
-"0","```r
-questions_import <- read_excel(filepath, sheet=\"Question_R\")
-questions_import
-```"

@@ -1,5 +1,0 @@
-"0","```r
-respondents <- dataset_merged[! is.na(dataset_merged$Answer),]
-
-aggregate(Respondent.ID~Question, respondents, unique(Respondent.ID))
-```"

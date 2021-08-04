@@ -1,4 +1,0 @@
-"0","```r
-dataset_modified <- dataset_modified[ , ! names(dataset_modified) %in% columns_to_drop] 
-dataset_modified # More methods: https://www.youtube.com/watch?v=yhdxuFNvHxU
-```"

@@ -1,4 +1,0 @@
-"0","```r
-questions <- questions[ , ! names(questions) %in% c(\"Raw.Question\", \"Raw.Subquestion\", \"Subquestion\")]
-questions
-```"

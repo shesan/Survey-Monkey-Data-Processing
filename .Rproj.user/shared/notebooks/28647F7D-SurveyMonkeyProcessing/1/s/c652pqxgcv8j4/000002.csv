@@ -1,7 +1,0 @@
-"0","Survey_Monkey_Question <- read_excel(""Data - Survey Monkey Output (Edited).xlsx"", sheet = ""Questions"")"
-"2","New names:
-* `` -> ...3
-* `Question & Subquestion` -> `Question & Subquestion...6`
-* `Question & Subquestion` -> `Question & Subquestion...7`
-"
-"0","Survey_Monkey_Question_2 <- Survey_Monkey_Question"
