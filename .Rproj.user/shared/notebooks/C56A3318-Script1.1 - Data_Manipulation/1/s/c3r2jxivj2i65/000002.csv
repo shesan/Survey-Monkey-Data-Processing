@@ -1,0 +1,10 @@
+"0","```r
+# I'm using readxl because it has no external dependencies
+library(readxl)
+library(reshape2)
+
+pwd <- getwd() # sets the current working directory
+pwd
+```"
+"1","[1] \"/Users/g42v/Documents/Personal/Survey Monkey Tutorial\"
+"

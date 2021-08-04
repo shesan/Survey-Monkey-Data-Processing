@@ -1,0 +1,6 @@
+"0","```r
+filepath <- paste(pwd, \"/Data - Survey Monkey Output Edited.xlsx\", sep=\"\") # Make sure you fix this separator, it's a space by default
+filepath
+```"
+"1","[1] \"/Users/g42v/Documents/Personal/Survey Monkey Tutorial/Data - Survey Monkey Output Edited.xlsx\"
+"

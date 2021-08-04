@@ -1,0 +1,5 @@
+"0","```r
+dataset_modified <- data.frame(data_import) # Make a copy of the dataframe
+
+dataset_modified # R seems to add \".\" to my column names
+```"

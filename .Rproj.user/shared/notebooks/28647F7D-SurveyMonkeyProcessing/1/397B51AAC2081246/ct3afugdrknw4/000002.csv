@@ -1,0 +1,2 @@
+"0","col_drop <- c(""Email Address"", ""First Name"", ""Last Name"", ""Custom Data 1"")"
+"0","Survey_Monkey_2 <- Survey_Monkey_2[, !names(Survey_Monkey_2) %in% col_drop]"

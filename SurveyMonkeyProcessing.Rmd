@@ -1,0 +1,107 @@
+---
+title: "SurveyMonkey"
+author: "Shesan"
+date: "30/07/2021"
+output: html_document
+---
+
+```{r}
+library(readxl)
+library(reshape2)
+library(data.table)
+library(writexl)
+library(dplyr)
+```
+
+
+
+```{r}
+Survey_Monkey <- read_excel("Data - Survey Monkey Output (Edited).xlsx", sheet = "Edited_Data")
+Survey_Monkey_2 <- (Survey_Monkey)
+
+# View(Survey_Monkey)
+# View(Survey_Monkey_2)
+```
+
+
+```{r}
+col_drop <- c("Email Address", "First Name", "Last Name", "Custom Data 1")
+Survey_Monkey_2 <- Survey_Monkey_2[, !names(Survey_Monkey_2) %in% col_drop]
+```
+
+```{r}
+id_variables <- colnames(Survey_Monkey_2)[1:10]
+id_variables
+
+# question_variables <- colnames(Survey_Monkey_2)[11:length()]
+```
+
+```{r}
+Survey_Monkey_Melt <- melt(Survey_Monkey_2, id = id_variables, variable.name = "Question", value.name = "Answer")
+# View(Survey_Monkey_Melt)
+```
+
+```{r}
+Survey_Monkey_Question <- read_excel("Data - Survey Monkey Output (Edited).xlsx", sheet = "Questions")
+Survey_Monkey_Question_2 <- Survey_Monkey_Question
+```
+
+```{r}
+# colnames(Survey_Monkey_Question_2)
+Survey_Monkey_Question_2 <- Survey_Monkey_Question_2[, !names(Survey_Monkey_Question_2) %in% c("Raw_Question", "Raw_Subquestion", "...3", "Question & Subquestion...6")]
+Survey_Monkey_Question_2 <- rename(Survey_Monkey_Question_2, "Questionsub" = "Question & Subquestion...7")
+# colnames(Survey_Monkey_Question_2)
+
+```
+
+```{r}
+#Merge and remove NA
+Survey_Monkey_Merged <- merge(Survey_Monkey_Melt, Survey_Monkey_Question_2, by.x = "Question", by.y = "Questionsub", all.x = TRUE)
+
+```
+
+```{r}
+respondents <- Survey_Monkey_Merged[! is.na(Survey_Monkey_Merged$Answer),]
+respondents <- respondents %>% count(Question.y)
+respondents <- rename(respondents, Question = "Question.y", Num_distinct_respondent = "n")
+respondents
+
+```
+```{r}
+Survey_Monkey_Merged_2 <- merge(x = Survey_Monkey_Merged, y = respondents, by.x = "Question.y", by.y = "Question", all.x = TRUE)
+```
+
+```{r}
+same_anws <- Survey_Monkey_Merged[! is.na(Survey_Monkey_Merged$Answer),]
+same_anws <- same_anws %>% count(Question.y, Answer)
+same_anws <- rename(same_anws, Num_distinct_anws = "n")
+same_anws
+```
+```{r}
+Survey_Monkey_Merged_3 <- merge(Survey_Monkey_Merged_2, same_anws, by = c("Question.y", "Answer"), all.x = TRUE )
+colnames(Survey_Monkey_Merged_3)
+```
+```{r}
+Survey_Monkey_Merged_Final <- rename(Survey_Monkey_Merged_3, 
+       Question = "Question.y", 
+       Question_subquestion = "Question", 
+       Division = "Identify which division you work in.-Response", 
+       Division_other = "Identify which division you work in.-Other (please specify)", 
+       Position_level = "Which of the following best describes your position level?-Response", 
+       Generation = "Which generation are you apart of?-Response", 
+       Gender = "Please select the gender in which you identify.-Response",
+       Tenure_range = "Which duration range best aligns with your tenure at your company?-Response",
+       Employment_type = "Which of the following best describes your employment type?-Response"
+       )
+```
+```{r}
+write_xlsx(Survey_Monkey_Merged_Final, path = "./Survey_Monkey_Output_R.xlsx")
+```
+
+
+
+
+
+
+
+

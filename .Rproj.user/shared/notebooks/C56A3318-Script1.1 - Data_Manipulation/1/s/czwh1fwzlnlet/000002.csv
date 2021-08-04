@@ -1,0 +1,4 @@
+"0","```r
+dataset_melted <- melt(dataset_modified, id=id_vars, variable.name = \"Question.+.Subquestion\", value.name = \"Answer\")
+dataset_melted
+```"

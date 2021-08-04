@@ -1,0 +1,4 @@
+"0","same_anws <- Survey_Monkey_Merged[! is.na(Survey_Monkey_Merged$Answer),]"
+"0","same_anws <- same_anws %>% count(Question.y, Answer)"
+"0","same_anws <- rename(same_anws, Num_distinct_anws = ""n"")"
+"0","same_anws"

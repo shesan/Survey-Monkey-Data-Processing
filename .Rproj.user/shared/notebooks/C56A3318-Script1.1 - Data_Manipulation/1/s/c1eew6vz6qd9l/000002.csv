@@ -1,0 +1,6 @@
+"0","```r
+
+dataset_merged <- merge(x=dataset_melted, y=questions, by.x =\"Question.+.Subquestion\", by.y = \"Question...Subquestion\", all.x=TRUE) # https://stackoverflow.com/questions/1299871/how-to-join-merge-data-frames-inner-outer-left-right
+
+dataset_merged
+```"
