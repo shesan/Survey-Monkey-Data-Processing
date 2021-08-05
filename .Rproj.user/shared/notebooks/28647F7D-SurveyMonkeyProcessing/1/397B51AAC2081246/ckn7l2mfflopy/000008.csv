@@ -1,5 +1,0 @@
-"0","# colnames(Survey_Monkey_Question_2)"
-"0","Survey_Monkey_Question_2 <- Survey_Monkey_Question_2[, !names(Survey_Monkey_Question_2) %in% c(""Raw_Question"", ""Raw_Subquestion"", ""...3"", ""Question"", ""Subquestion"", ""Question & Subquestion...6"")]"
-"0","Survey_Monkey_Question_2 <- rename(Survey_Monkey_Question_2, ""Question"" = ""Question & Subquestion...7"")"
-"0","# colnames(Survey_Monkey_Question_2)"
-"0",""

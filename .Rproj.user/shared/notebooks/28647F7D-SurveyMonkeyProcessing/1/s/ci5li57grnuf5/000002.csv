@@ -1,4 +1,0 @@
-"0","#Merge and remove NA"
-"0","Survey_Monkey_Merged <- merge(Survey_Monkey_Melt, Survey_Monkey_Question_2, by.x = ""Question"", by.y = ""Questionsub"", all.x = TRUE)"
-"0","respondents <- Survey_Monkey_Merged[! is.na(Survey_Monkey_Merged$Answer),]"
-"0",""

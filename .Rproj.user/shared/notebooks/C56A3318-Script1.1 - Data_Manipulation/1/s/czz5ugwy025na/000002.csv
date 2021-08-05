@@ -1,4 +1,0 @@
-"0","```r
-questions <- data.frame(questions_import)
-questions
-```"
